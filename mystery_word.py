@@ -2,11 +2,11 @@
 import random
 import re
 
-def dictionayr(master):
+def dictionary(master):
     with open("/usr/share/dict/words", "r") as f:
         for line in f:
             print(line, end="")
-    dictionay = master.read()
+    dictionary = master.read()
     dictionary = dictionary.lower().split()
 
 # Let the user choose a level of difficulty at the beginning of the program. Easy mode only has words of 4-6 characters; normal mode only has words of 6-8 characters; hard mode only has words of 8+ characters.
@@ -58,12 +58,19 @@ def what_level():
     level = input("What challenge do you want, easy, medium or hard?.\n")
     level = level.lower()
     if level == "easy":
-        answer = random(easy_mode(dictionay))
+        answer = random(easy_mode(dictionary))
     elif level == "medium":
-        answer = random(medium_mode(dictionsy))
+        answer = random(medium_mode(dictionary))
     else:
-        answer = random(hard_mode(dictionaru))
+        answer = random(hard_mode(dictionary))
     return answer
+
+def main():
+    answer = what_level()
+    return gameplay_loop(answer)
+
+if __name__ == "__main__":
+    main()
 
 # Ask the user to supply one guess (i.e. letter) per round. This letter can be upper or lower case and it does not matter. If a user enters more than one letter, tell them the input is invalid and let them try again.
 
@@ -93,9 +100,3 @@ def what_level():
 # Write other helper functions as necessary to help with the flow of the game.
 
 # Run mystery_word_test.py and ensure you pass all the unit tests.
-def main():
-    answer = what_level()
-    return gameplay_loop(answer)
-
-if __name__ == "__main__":
-    main()
